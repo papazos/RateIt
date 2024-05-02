@@ -1,10 +1,10 @@
 export default function HowItWorks() {
   return (
-    <div className="how-it-works flex flex-col justify-center items-center gap-10 my-[150px]">
-      <h1 className=" font-bold text-[48px]">How it works?</h1>
+    <div className="flex flex-col justify-center items-center gap-10 lg:my-[150px]">
+      <h1 className="font-bold text-2xl md:text-4xl lg:text-[48px]">How it works?</h1>
       <hr className="w-[58px] border-[#1F64FF] border-2 rounded-full" />
-      <div className="grid grid-cols-3 gap-28">
-        <div className="flex flex-col items-center text-center gap-1">
+      <div className="lg:grid lg:grid-cols-3 gap-28">
+        <div className="flex flex-col items-center text-center gap-1 py-9">
           <div>
             <img src="/img/calendar.svg" alt="" />
           </div>
@@ -14,7 +14,7 @@ export default function HowItWorks() {
             mirror your planned meetings.
           </span>
         </div>
-        <div className="flex flex-col items-center text-center gap-1">
+        <div className="flex flex-col items-center text-center gap-1 py-9">
           <div>
             <img src="/img/custom.svg" alt="" />
           </div>
@@ -24,7 +24,7 @@ export default function HowItWorks() {
             better help you understand the minds of those involved.
           </span>
         </div>
-        <div className="flex flex-col items-center text-center gap-1">
+        <div className="flex flex-col items-center text-center gap-1 py-9">
           <div>
             <img src="/img/email.svg" alt="" />
           </div>
