@@ -97,6 +97,14 @@ export default function NavBar() {
     }
   };
 
+  const navItems = [
+    ["How it works", "1-1"],
+    ["Pricing", "1-2"],
+    ["Why it's important", "1-3"],
+    ["About us", "1-4"],
+    ["Contact", "1-5"],
+  ];
+
   return (
     <div className="navbar py-[20px] px-[50px] sm:py-[56px] sm:px-[90px]">
       <div className="flex gap-5 justify-between items-center">
@@ -107,13 +115,11 @@ export default function NavBar() {
           <span className="text-xl">Rate it</span>
         </div>
         <div className="nav hidden lg:flex gap-5 font-main font-semibold">
-          <button onClick={() => handleNavClick("1-1")}>How it works</button>
-          <button onClick={() => handleNavClick("1-2")}>Pricing</button>
-          <button onClick={() => handleNavClick("1-3")}>
-            Why it's important
-          </button>
-          <button onClick={() => handleNavClick("1-4")}>About us</button>
-          <button onClick={() => handleNavClick("1-5")}>Contact</button>
+          {navItems.map(([label, key]) => (
+            <button key={key} onClick={() => handleNavClick(key)}>
+              {label}
+            </button>
+          ))}
         </div>
         <div className="auth hidden lg:flex">
           <Space>
