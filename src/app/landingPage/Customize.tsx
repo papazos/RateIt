@@ -1,8 +1,12 @@
 import { Button } from "antd";
+import { forwardRef } from "react";
 
-export default function Customize() {
+export default forwardRef<HTMLDivElement>(function Customize(_props, ref) {
   return (
-    <div className="flex flex-col items-center gap-5 justify-center text-center mx-16 xl:mx-96 lg:mx-40 mb-[150px] font-main">
+    <div
+      ref={ref}
+      className="flex flex-col items-center gap-5 justify-center text-center pt-10 mx-16 xl:mx-96 lg:mx-40 mb-[150px] font-main"
+    >
       <h1 className="font-bold text-2xl md:text-4xl lg:text-[48px]">
         Customizable plans for every company
       </h1>
@@ -87,4 +91,4 @@ export default function Customize() {
       </div>
     </div>
   );
-}
+});

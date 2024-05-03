@@ -1,54 +1,100 @@
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import { Button, Dropdown, MenuProps, Space } from "antd";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { RefContext } from "../../App";
 
 export default function NavBar() {
   const [collapsed, setCollapsed] = useState(false);
+  const refContext = useContext(RefContext);
+
+  const scrollToRef = (ref: React.RefObject<HTMLElement>) => {
+    ref.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   const handleMenuClick: MenuProps["onClick"] = (e) => {
-    console.log("click", e);
+    switch (e.key) {
+      case "1-1":
+        scrollToRef(refContext!.howItWorksRef);
+        break;
+      case "1-2":
+        scrollToRef(refContext!.whyItsImportantRef);
+        break;
+      case "1-3":
+        scrollToRef(refContext!.customizeRef);
+        break;
+      case "1-4":
+        scrollToRef(refContext!.aboutUsRef);
+        break;
+      case "1-5":
+        scrollToRef(refContext!.contactRef);
+        break;
+      default:
+        break;
+    }
   };
 
   const items: MenuProps["items"] = [
     {
-      label: "How it works",
+      label: "Navigation",
       key: "1",
+      children: [
+        {
+          label: "How it works",
+          key: "1-1",
+        },
+        {
+          label: "Why it's important",
+          key: "1-2",
+        },
+        {
+          label: "Pricing",
+          key: "1-3",
+        },
+        {
+          label: "About us",
+          key: "1-4",
+        },
+        {
+          label: "Contact",
+          key: "1-5",
+        },
+      ],
     },
     {
-      label: "Pricing",
+      label: "Log in",
       key: "2",
     },
     {
-      label: "Why it's important",
+      label: "Sign up",
       key: "3",
-    },
-    {
-      label: "About us",
-      key: "4",
-    },
-    {
-      label: "Contact",
-      key: "5",
-    },
-    {
-      label: "Authentication",
-      key: "6",
-      children: [
-        {
-          key: "6-1",
-          label: "Log in",
-        },
-        {
-          key: "6-2",
-          label: "Sign up",
-        },
-      ],
     },
   ];
 
   const menuProps = {
     items,
     onClick: handleMenuClick,
+  };
+
+  const handleNavClick = (key: string) => {
+    switch (key) {
+      case "1-1":
+        scrollToRef(refContext!.howItWorksRef);
+        break;
+      case "1-2":
+        scrollToRef(refContext!.whyItsImportantRef);
+        break;
+      case "1-3":
+        scrollToRef(refContext!.customizeRef);
+        break;
+      case "1-4":
+        scrollToRef(refContext!.aboutUsRef);
+        break;
+      case "1-5":
+        scrollToRef(refContext!.contactRef);
+        break;
+      default:
+        break;
+    }
   };
 
   return (
@@ -61,16 +107,18 @@ export default function NavBar() {
           <span className="text-xl">Rate it</span>
         </div>
         <div className="nav hidden lg:flex gap-5 font-main font-semibold">
-          <span>How it works</span>
-          <span>Pricing</span>
-          <span>Why it's important</span>
-          <span>About us</span>
-          <span>Contact</span>
+          <button onClick={() => handleNavClick("1-1")}>How it works</button>
+          <button onClick={() => handleNavClick("1-2")}>Pricing</button>
+          <button onClick={() => handleNavClick("1-3")}>
+            Why it's important
+          </button>
+          <button onClick={() => handleNavClick("1-4")}>About us</button>
+          <button onClick={() => handleNavClick("1-5")}>Contact</button>
         </div>
         <div className="auth hidden lg:flex">
           <Space>
             <Button type="primary" ghost size="large">
-              Login
+              Log in
             </Button>
             <Button size="large" type="primary">
               Sign up
@@ -78,7 +126,7 @@ export default function NavBar() {
           </Space>
         </div>
         <div className="flex lg:hidden">
-          <Dropdown menu={menuProps} trigger={['click']}>
+          <Dropdown menu={menuProps} trigger={["click"]}>
             <Button
               type="primary"
               ghost

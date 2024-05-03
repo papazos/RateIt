@@ -1,17 +1,20 @@
 import { Button, Form } from "antd";
+import { forwardRef } from "react";
 
-export default function MessageForm() {
+export default forwardRef<HTMLDivElement>(function MessageForm(_props, ref) {
   return (
-    <div className="grid grid-cols-12">
-      <div className="col-span-4 bg-[#1F64FF] flex justify-center items-center font-main text-5xl font-semibold text-white p-32">
-        We all know that time is money... so stop wasting time, and save money
-        with Rate It!
+    <div ref={ref} className="grid grid-cols-12">
+      <div className="col-span-12 lg:col-span-5 xl:col-span-4 bg-[#1F64FF] flex justify-center items-center font-main text-3xl xl:text-4xl py-12 font-semibold text-white">
+        <h1 className="max-w-60 xl:max-w-72 text-center">
+          We all know that time is money... so stop wasting time, and save money
+          with Rate It!
+        </h1>
       </div>
-      <div className="col-span-8">
-        <div className="h-full px-[85px]">
+      <div className="col-span-12 lg:col-span-7 xl:col-span-8">
+        <div className="h-full px-10 xl:px-[85px] pt-10 lg:pt-28">
           <Form layout="vertical" autoComplete="off" className="h-full">
-            <div className="flex flex-col h-full justify-between py-12">
-              <div className="flex justify-between gap-36">
+            <div className="flex flex-col h-full justify-between">
+              <div className="flex justify-between gap-7 md:gap-10 lg:gap-20 xl:gap-32">
                 <Form.Item
                   name="firstName"
                   label="First Name"
@@ -29,7 +32,7 @@ export default function MessageForm() {
                   />
                 </Form.Item>
               </div>
-              <div className="flex justify-between gap-36">
+              <div className="flex justify-between gap-7 md:gap-10 lg:gap-20 xl:gap-32">
                 <Form.Item label="Mail" name="mail" className="w-full">
                   <input
                     type="text"
@@ -54,7 +57,7 @@ export default function MessageForm() {
                 <Button
                   type="primary"
                   htmlType="submit"
-                  className="w-[200px] h-[52px] font-semibold"
+                  className="xl:w-[200px] xl:h-[52px] font-semibold"
                 >
                   Send Message
                 </Button>
@@ -65,4 +68,4 @@ export default function MessageForm() {
       </div>
     </div>
   );
-}
+});

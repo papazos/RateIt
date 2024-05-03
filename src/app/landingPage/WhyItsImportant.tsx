@@ -1,8 +1,15 @@
 import { Button } from "antd";
+import { forwardRef } from "react";
 
-export default function WhyItsImportant() {
+export default forwardRef<HTMLDivElement>(function WhyItsImportant(
+  _props,
+  ref
+) {
   return (
-    <div className="flex flex-col justify-center items-center mx-16 xl:mx-96 lg:mx-40 mb-[150px] gap-5 font-main">
+    <div
+      ref={ref}
+      className="flex flex-col justify-center items-center mx-16 xl:mx-96 pt-10 lg:mx-40 mb-[150px] gap-5 font-main"
+    >
       <h1 className="text-center font-bold text-xl md:text-4xl lg:text-[48px]">
         Why it's important?
       </h1>
@@ -49,4 +56,4 @@ export default function WhyItsImportant() {
       </Button>
     </div>
   );
-}
+});
