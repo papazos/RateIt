@@ -1,7 +1,7 @@
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import { Button, Dropdown, MenuProps, Space } from "antd";
 import { useContext, useState } from "react";
-import { RefContext } from "../../App";
+import { RefContext } from "../layout/App";
 
 export default function NavBar() {
   const [collapsed, setCollapsed] = useState(false);

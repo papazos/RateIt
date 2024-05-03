@@ -1,13 +1,13 @@
 import { FloatButton } from "antd";
-import AboutUs from "./app/landingPage/AboutUs";
-import Banner from "./app/landingPage/Banner";
-import Customize from "./app/landingPage/Customize";
-import HowItWorks from "./app/landingPage/HowItWorks";
-import Landing from "./app/landingPage/Landing";
-import MessageForm from "./app/landingPage/MessageForm";
-import NavBar from "./app/landingPage/NavBar";
-import WhyItsImportant from "./app/landingPage/WhyItsImportant";
-import Footer from "./app/landingPage/Footer";
+import AboutUs from "../landingPage/AboutUs";
+import Banner from "../landingPage/Banner";
+import Customize from "../landingPage/Customize";
+import HowItWorks from "../landingPage/HowItWorks";
+import Landing from "../landingPage/Landing";
+import MessageForm from "../landingPage/MessageForm";
+import NavBar from "../landingPage/NavBar";
+import WhyItsImportant from "../landingPage/WhyItsImportant";
+import Footer from "../landingPage/Footer";
 import { createContext, useRef } from "react";
 
 type RefContextType = {
