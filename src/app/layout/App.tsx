@@ -8,7 +8,8 @@ import MessageForm from "../landingPage/MessageForm";
 import NavBar from "../landingPage/NavBar";
 import WhyItsImportant from "../landingPage/WhyItsImportant";
 import Footer from "../landingPage/Footer";
-import { createContext, useRef } from "react";
+import { createContext, useEffect, useRef, useState } from "react";
+import SplashScreen from "../components/SplashScreen";
 
 type RefContextType = {
   howItWorksRef: React.RefObject<HTMLDivElement>;
@@ -35,18 +36,46 @@ export default function App() {
     contactRef,
   };
 
+  const pathname = window.location.pathname;
+  const isHome = pathname === "/";
+  const [isLoading, setIsLoading] = useState(isHome);
+  const [isVisible, setIsVisible] = useState(!isHome);
+
+  useEffect(() => {
+    if (isLoading) {
+      return;
+    }
+  }, [isLoading]);
+
   return (
-    <RefContext.Provider value={value}>
-      <NavBar />
-      <Landing />
-      <HowItWorks ref={howItWorksRef} />
-      <WhyItsImportant ref={whyItsImportantRef} />
-      <Customize ref={customizeRef} />
-      <Banner />
-      <AboutUs ref={aboutUsRef} />
-      <MessageForm ref={contactRef} />
-      <Footer />
-      <FloatButton.BackTop />
-    </RefContext.Provider>
+    <>
+      {isLoading && isHome ? (
+        <SplashScreen
+          finishLoading={() => {
+            setIsLoading(false);
+            setTimeout(() => setIsVisible(true), 10);
+          }}
+        />
+      ) : (
+        <RefContext.Provider value={value}>
+          <div
+            id="fadeout-bg"
+            className={`fixed z-50 h-screen w-screen transform bg-white transition-opacity duration-500 ${
+              isVisible ? "pointer-events-none opacity-0" : "opacity-100"
+            }`}
+          />
+          <NavBar />
+          <Landing />
+          <HowItWorks ref={howItWorksRef} />
+          <WhyItsImportant ref={whyItsImportantRef} />
+          <Customize ref={customizeRef} />
+          <Banner />
+          <AboutUs ref={aboutUsRef} />
+          <MessageForm ref={contactRef} />
+          <Footer />
+          <FloatButton.BackTop />
+        </RefContext.Provider>
+      )}
+    </>
   );
 }
